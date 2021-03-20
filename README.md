@@ -1,6 +1,10 @@
 # atypical_todo_list
 
-A new Flutter project.
+A new Flutter project. My new book Flutter Guide will use this code repository and others as well.
+
+In this repository we will take inputs from text fields and add our todo list.
+
+Fairly simple, but it will help readers to learn more about Flutter layouts and state management.
 
 ## Getting Started
 
