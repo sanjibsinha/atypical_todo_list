@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
 
 // Define a custom Form widget.
-class MyCustomForm extends StatefulWidget {
-  @override
-  _MyCustomFormState createState() => _MyCustomFormState();
-}
+class MyCustomForm extends StatelessWidget {
+  final idController = TextEditingController();
+  final titleController = TextEditingController();
+  final taskController = TextEditingController();
+  final Function addData;
+  MyCustomForm(this.addData);
+  void submitData() {
+    addData(
+      idController.text,
+      titleController.text,
+      taskController.text,
+    );
+  }
 
-// Define a corresponding State class.
-// This class holds data related to the Form.
-class _MyCustomFormState extends State<MyCustomForm> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -16,18 +22,26 @@ class _MyCustomFormState extends State<MyCustomForm> {
       child: Column(
         children: <Widget>[
           TextField(
-            onChanged: (textOne) {
-              print("First text field: $textOne");
-            },
+            decoration: InputDecoration(hintText: 'ID in Number'),
+            controller: idController,
+            keyboardType: TextInputType.number,
           ),
           TextField(
-            onChanged: (textTwo) {
-              print("First text field: $textTwo");
-            },
+            decoration: InputDecoration(hintText: 'Titile of Task to do'),
+            controller: titleController,
+          ),
+          TextField(
+            decoration: InputDecoration(hintText: 'Detail of Task to do'),
+            controller: taskController,
+            onSubmitted: (_) => submitData(),
           ),
           TextButton(
             onPressed: () {
-              print('object');
+              addData(
+                idController.text,
+                titleController.text,
+                taskController.text,
+              );
             },
             child: new Text(
               'Click and Add ToDo List',
